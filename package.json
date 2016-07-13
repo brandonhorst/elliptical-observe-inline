@@ -1,6 +1,6 @@
 {
   "name": "elliptical-observe-inline",
-  "version": "1.0.0-rc1",
+  "version": "1.0.0",
   "description": "Dynamic sideways Data Loading for Elliptical",
   "main": "lib-node/index.js",
   "jsnext:main": "lib-es/index.js",
