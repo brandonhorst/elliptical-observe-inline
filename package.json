@@ -1,6 +1,6 @@
 {
   "name": "elliptical-observe-inline",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Dynamic sideways Data Loading for Elliptical",
   "main": "lib-node/index.js",
   "jsnext:main": "lib-es/index.js",
@@ -41,8 +41,8 @@
   "bugs": {
     "url": "https://github.com/laconalabs/elliptical-observe/issues"
   },
-  "engines" : {
-    "node" : ">=4.0.0"
+  "engines": {
+    "node": ">=4.0.0"
   },
   "homepage": "https://github.com/laconalabs/elliptical-observe",
   "devDependencies": {
