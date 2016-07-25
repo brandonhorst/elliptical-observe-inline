@@ -45,7 +45,10 @@ describe('dynamic', () => {
       words: [{text: 't', input: true}, {text: 'est', input: false}],
       result: 'test',
       score: 1,
-      qualifiers: []
+      qualifiers: [],
+      annotations: [],
+      arguments: [],
+      categories: []
     }])
   })
 
@@ -79,7 +82,10 @@ describe('dynamic', () => {
       words: [{text: 't', input: true}, {text: 'est', input: false}],
       result: 'test',
       score: 1,
-      qualifiers: []
+      qualifiers: [],
+      annotations: [],
+      arguments: [],
+      categories: []
     }])
 
     process.nextTick(() => {
@@ -89,7 +95,10 @@ describe('dynamic', () => {
         words: [{text: 't', input: true}, {text: 'otally', input: false}],
         result: 'totally',
         score: 1,
-        qualifiers: []
+        qualifiers: [],
+        annotations: [],
+        arguments: [],
+        categories: []
       }])
 
       done()
@@ -137,7 +146,10 @@ describe('dynamic', () => {
       ],
       result: {dynamic: 'bbatmanb'},
       score: 1,
-      qualifiers: []
+      qualifiers: [],
+      annotations: [],
+      arguments: [],
+      categories: []
     }, {
       text: null,
       words: [
@@ -146,7 +158,10 @@ describe('dynamic', () => {
       ],
       result: {dynamic: 'testbbatmantestb'},
       score: 1,
-      qualifiers: []
+      qualifiers: [],
+      annotations: [],
+      arguments: [],
+      categories: []
     }])
   })
 
@@ -243,7 +258,10 @@ describe('dynamic', () => {
       ],
       result: {},
       score: 1,
-      qualifiers: []
+      qualifiers: [],
+      annotations: [],
+      arguments: [],
+      categories: []
     }, {
       text: null,
       words: [
@@ -253,7 +271,10 @@ describe('dynamic', () => {
       ],
       result: {},
       score: 1,
-      qualifiers: []
+      qualifiers: [],
+      annotations: [],
+      arguments: [],
+      categories: []
     }])
   })
 })

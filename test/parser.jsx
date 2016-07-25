@@ -25,7 +25,10 @@ describe('parser', () => {
       words: [{text: 't', input: true}, {text: 'est', input: false}],
       result: undefined,
       score: 1,
-      qualifiers: []
+      qualifiers: [],
+      annotations: [],
+      arguments: [],
+      categories: []
     }])
   })
 
@@ -44,7 +47,10 @@ describe('parser', () => {
       words: [{text: 't', input: true}, {text: 'est', input: false}],
       result: undefined,
       score: 1,
-      qualifiers: []
+      qualifiers: [],
+      annotations: [],
+      arguments: [],
+      categories: []
     }])
   })
 
@@ -80,7 +86,10 @@ describe('parser', () => {
       words: [{text: 't', input: true}, {text: 'est', input: false}],
       result: undefined,
       score: 1,
-      qualifiers: []
+      qualifiers: [],
+      annotations: [],
+      arguments: [],
+      categories: []
     }])
 
     process.nextTick(() => {
@@ -89,7 +98,10 @@ describe('parser', () => {
         words: [{text: 't', input: true}, {text: 'otally', input: false}],
         result: undefined,
         score: 1,
-        qualifiers: []
+        qualifiers: [],
+        annotations: [],
+        arguments: [],
+        categories: []
       }])
       done()
     })

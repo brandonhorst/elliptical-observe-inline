@@ -8,27 +8,36 @@ export default function createStore () {
     observer = newObserver
   })
 
+  function fetchAndSubscribe (element, item) {
+    const fetched = element.type.fetch(element)
+
+    const subscription = fetched.subscribe({
+      next (value) {
+        item.value = value
+
+        if (observer) {
+          observer.next({element, value})
+        }
+      }
+    })
+    if (item.subscription) {
+      item.subscription.unsubscribe()
+    }
+    item.subscription = subscription
+  }
+
   function register (element) {
     const existing = _.find(items, (item) => _.isEqual(element, item.element))
 
     if (existing) {
-      return existing.value
+      const currentValue = existing.value
+
+      return currentValue
     } else {
-      const newItem = {element}
+      const newItem = {element, dirty: false}
       items.push(newItem)
 
-      const fetched = element.type.fetch(element)
-
-      const subscription = fetched.subscribe({
-        next (value) {
-          newItem.value = value
-
-          if (observer) {
-            observer.next({element, value})
-          }
-        }
-      })
-      newItem.subscription = subscription
+      fetchAndSubscribe(element, newItem)
 
       return newItem.value
     }

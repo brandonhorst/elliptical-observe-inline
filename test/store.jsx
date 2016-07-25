@@ -160,4 +160,22 @@ describe('store', () => {
       })
     })
   })
+
+  it('allows removal', () => {
+    const fetchSpy = spy()
+    const Test = {
+      fetch () {
+        fetchSpy()
+        return new Observable((observer) => {
+          observer.next(3)
+        })
+      }
+    }
+
+    store.register(<Test />)
+    store.remove(store.items[0])
+    expect(store.items).to.be.empty
+    store.register(<Test />)
+    expect(fetchSpy).to.have.been.calledTwice
+  })
 })

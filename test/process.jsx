@@ -80,7 +80,7 @@ describe('process', () => {
     parse('')
     parse('t')
     parse('te')
-    expect(describeSpy).to.have.been.calledOnce
+    expect(describeSpy).to.have.been.calledTwice
   })
 
   it('does not recompile children unless changed', () => {
@@ -105,7 +105,7 @@ describe('process', () => {
     parse('')
     parse('t')
     parse('te')
-    expect(describeSpy).to.have.been.calledOnce
+    expect(describeSpy).to.have.been.calledTwice
   })
 
   it('does not recompile children unless changed (nested)', () => {
@@ -135,7 +135,7 @@ describe('process', () => {
     parse('')
     parse('t')
     parse('te')
-    expect(describeSpy).to.have.been.calledOnce
+    expect(describeSpy).to.have.been.calledTwice
   })
 
   it('passes result of register to visit as data', () => {

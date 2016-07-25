@@ -34,21 +34,30 @@ export default function createProcessor (register, processor) {
       return {description, sources, values}
     }
 
-    const {description, sources, values} = describeAndTrackObserve()
+    const {description: firstDescription, sources: firstSources, values: firstValues} = describeAndTrackObserve()
+    let firstRun = true
 
     // If it never called observe, it never WILL call observe during
     // a normal describe. It may with 'dynamic' or a child value,
     // but we can't track and optimize that - so we'll just
     // pass a naive observe
-    if (sources.length === 0) {
+    if (firstSources.length === 0) {
       return newElement
     } else {
-      let oldValues = []
-      let oldSources = []
-      let oldDescription
+      let oldValues = firstValues
+      let oldSources = firstSources
+      let oldDescription = firstDescription
 
       function visit (option, e, traverse) {
-        const {sources, values, description} = describeAndTrackObserve()
+        let sources, values, description
+        if (firstRun) {
+          sources = firstSources
+          values = firstValues
+          description = firstDescription
+          firstRun = false
+        } else {
+          ;({sources, values, description} = describeAndTrackObserve())
+        }
         if (oldDescription == null && description != null ||
           values.length !== oldValues.length || // perf opt
           _.some(_.unzip([values, oldValues]), ([a, b]) => a !== b) ||
