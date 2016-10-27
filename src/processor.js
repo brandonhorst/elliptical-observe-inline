@@ -1,15 +1,15 @@
 import _ from 'lodash'
 
 export default function createProcessor (register, processor) {
-  return function process (element) {
-    function untrackedObserve (source) {
-      if (processor) {
-        source = processor(source)
-      }
-      return register(source)
+  function observe (source) {
+    if (processor) {
+      source = processor(source)
     }
+    return register(source)
+  }
 
-    const newElement = _.assign({}, element, {observe: untrackedObserve})
+  function process (element) {
+    const newElement = _.assign({}, element, {observe})
 
     // Don't worry about builtins, or Phrases with a visit
     if (_.isString(element.type) || !element.type.describe) {
@@ -78,4 +78,8 @@ export default function createProcessor (register, processor) {
       return _.assign({}, newElement, {type})
     }
   }
+
+  process.observe = observe
+
+  return process
 }
